@@ -1,16 +1,20 @@
+package entity;
+
+import java.util.Date;
+
 public class User {
-    private int id;
+    private int idUser;
     private String username;
     private String nationalCode;
-    private int birthday;
+    private java.sql.Date birthday;
     private String password;
 
-    public int getId() {
-        return id;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getUsername() {
@@ -26,15 +30,22 @@ public class User {
     }
 
     public void setNationalCode(String nationalCode) {
-        this.nationalCode = nationalCode;
+        if (nationalCode.length() < 10 || nationalCode.length() > 10){
+            System.out.println("The national code must have 10 characters");
+        }
+        else this.nationalCode = nationalCode;
     }
 
-    public int getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(int birthday) {
+    public void setBirthday(java.sql.Date birthday) {
         this.birthday = birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = (java.sql.Date) birthday;
     }
 
     public String getPassword() {
